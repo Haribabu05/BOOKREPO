@@ -51,19 +51,6 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        table thead th:nth-child(1) {
-            width: 10%;
-        }
-
-        table thead th:nth-child(2) {
-            width: 70%;
-        }
-
-        table thead th:nth-child(3) {
-            width: 20%;
         }
 
         table td, th {
@@ -198,6 +185,11 @@
             }
         }
 
+        /* Animation */
+        table {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -220,24 +212,24 @@
         <table>
             <thead>
                 <tr>
-                    <th>Sig. No</th>
                     <th>Name</th>
+                    <th>Modified Time</th>
                     <th>Size</th>
                 </tr>
             </thead>
             <tbody>
                 {% for fileObj in files %}
                 <tr>
-                    <td>{{ loop.index }}</td>
                     <td>
-                        <a href="{{ url_for('index', reqPath=fileObj['fLink']) }}">
+                        <a href="{{url_for('index',reqPath=fileObj['fLink'])}}">
                             <span>
-                                <i class="{{ fileObj['fIcon'] }}" style="margin-right:0.3em"></i>
-                                {{ fileObj['name'] }}
+                                <i class="{{fileObj['fIcon']}}" style="margin-right:0.3em"></i>
+                                {{fileObj['name']}}
                             </span>
                         </a>
                     </td>
-                    <td>{{ fileObj['size'] }}</td>
+                    <td>{{fileObj['mTime']}}</td>
+                    <td>{{fileObj['size']}}</td>
                 </tr>
                 {% endfor %}
             </tbody>
