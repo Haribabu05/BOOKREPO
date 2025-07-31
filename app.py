@@ -18,12 +18,12 @@ def getReadableByteSize(num,suffix='B') -> str:
             return "%3.1f%s%s" % (num,unit,suffix)
         num /=1024.0
     return "%.1f%s%s" % (num,'Y',suffix)
-@app.route("/")
+@app.route("/Books/")
 def home():
     return "Hello World!!!"
 
-@app.route('/Books/',defaults={'reqPath':''})
-@app.route("/Books/<path:reqPath>")
+@app.route('/',defaults={'reqPath':''})
+@app.route("/<path:reqPath>")
 def index(reqPath):
     absPath = safe_join(baseFolderPath,reqPath)
     if not os.path.exists(absPath):
