@@ -45,4 +45,4 @@ def index(reqPath):
     return render_template('index.html.j2',files=fName)
 
 #run the server
-app.run(host="0.0.0.0",port=10100,debug=True)
+app.run(host="0.0.0.0",port=10100)
